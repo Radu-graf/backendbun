@@ -6,9 +6,15 @@ const cors = require("cors");
 
 const app = express();
 
-app.use(cors());
 app.use(express.json());
+const cors = require("cors");
 
+app.use(cors({
+    origin: "https://printreadevarsiiluzie.netlify.app",
+    methods: ["GET", "POST"],
+    credentials: true
+}));
+app.options("*", cors());
 app.post("/run", async (req, res) => {
 
     const { script, input } = req.body;
